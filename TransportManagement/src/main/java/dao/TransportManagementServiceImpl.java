@@ -29,6 +29,14 @@ public class TransportManagementServiceImpl implements TransportManagementServic
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        } finally {
+            try {
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();  // 🚀 Closing DB Connection
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
